@@ -312,10 +312,286 @@
     </div>
   </section>
 
-  <!-- ═══════════ Placeholders para CIRCUITOS, APLICACIONES, QUIZ ═══════════ -->
-  <section class="section" id="circuitos"><h2>🔌 Circuitos Básicos</h2><p style="color:var(--muted);">Cargando diagramas de circuitos...</p></section>
-  <section class="section" id="aplicaciones"><h2>🏭 Aplicaciones Industriales</h2><p style="color:var(--muted);">Cargando aplicaciones...</p></section>
-  <section class="section" id="quiz"><h2>🧠 Quiz</h2><p style="color:var(--muted);">Cargando preguntas...</p></section>
+  <!-- ═══════════ 3. CIRCUITOS ═══════════ -->
+  <section class="section" id="circuitos">
+    <h2>🔌 Circuitos Electroneumáticos Básicos</h2>
+    <p style="color:var(--muted);margin-bottom:1rem;">Circuitos fundamentales con diagramas de mando eléctrico (izquierda) y circuito neumático (derecha).</p>
+
+    <!-- Circuito 1: Mando directo simple efecto -->
+    <div class="card">
+      <h3 style="margin-top:0;">1. Mando Directo — Cilindro Simple Efecto</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">El circuito más simple. Un <strong>pulsador NA (S1)</strong> energiza la bobina <strong>Y1</strong> de una electroválvula <strong>3/2 NC monoestable</strong>. Al presionar, el vástago <strong>avanza</strong>. Al soltar, el resorte <strong>retorna</strong> el cilindro.</p>
+      <svg viewBox="0 0 750 280" width="750" height="280" class="diagram">
+        <rect x="10" y="10" width="350" height="260" rx="8" fill="#111827" stroke="#f59e0b33" stroke-width="1"/>
+        <text x="185" y="35" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">CIRCUITO ELÉCTRICO (24V DC)</text>
+        <!-- Líneas de alimentación -->
+        <line x1="30" y1="50" x2="30" y2="250" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="330" y1="50" x2="330" y2="250" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="15" y="160" fill="#f59e0b" font-size="9">L1+</text>
+        <text x="335" y="160" fill="#f59e0b" font-size="9">L2-</text>
+        <!-- Pulsador S1 NA -->
+        <line x1="30" y1="80" x2="100" y2="80" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="100" y1="80" x2="130" y2="60" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="130" y1="60" x2="160" y2="80" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="160" y1="80" x2="330" y2="80" stroke="#f59e0b" stroke-width="1"/>
+        <text x="145" y="55" text-anchor="middle" fill="#f59e0b" font-size="9">S1 ↵</text>
+        <text x="200" y="100" text-anchor="middle" fill="#94a3b8" font-size="8">Pulsador NA (Marcha)</text>
+        <!-- Bobina Y1 -->
+        <rect x="200" y="130" width="80" height="50" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="30" y1="155" x2="200" y2="155" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="280" y1="155" x2="330" y2="155" stroke="#f59e0b" stroke-width="1"/>
+        <text x="240" y="160" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600">Y1</text>
+        <text x="240" y="195" text-anchor="middle" fill="#94a3b8" font-size="8">Bobina EV 3/2</text>
+
+        <rect x="375" y="10" width="365" height="260" rx="8" fill="#111827" stroke="#3b82f633" stroke-width="1"/>
+        <text x="557" y="35" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="600">CIRCUITO NEUMÁTICO</text>
+        <!-- Alimentación aire -->
+        <line x1="400" y1="60" x2="400" y2="80" stroke="#3b82f6" stroke-width="1.5"/>
+        <polygon points="400,60 415,50 385,50" fill="#3b82f6"/>
+        <text x="430" y="55" fill="#3b82f6" font-size="9">Aire 6 bar</text>
+        <!-- Válvula 3/2 -->
+        <rect x="440" y="80" width="60" height="60" rx="6" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="470" y="100" text-anchor="middle" fill="#3b82f6" font-size="8">3/2</text>
+        <line x1="400" y1="80" x2="440" y2="95" stroke="#3b82f6" stroke-width="1"/>
+        <line x1="500" y1="110" x2="530" y2="110" stroke="#3b82f6" stroke-width="1"/>
+        <!-- Silenciador -->
+        <polygon points="440,140 460,140 450,155" fill="none" stroke="#3b82f6" stroke-width="1"/>
+        <!-- Cilindro -->
+        <rect x="530" y="80" width="100" height="60" rx="6" fill="none" stroke="#3b82f6" stroke-width="2"/>
+        <line x1="560" y1="90" x2="590" y2="90" stroke="#3b82f6" stroke-width="1.5"/>
+        <rect x="585" y="82" width="15" height="16" rx="3" fill="#3b82f690" stroke="#3b82f6" stroke-width="1"/>
+        <!-- Resorte -->
+        <path d="M560,135 Q565,128 570,135 Q575,142 580,135 Q585,128 590,135" fill="none" stroke="#64748b" stroke-width="0.8"/>
+        <text x="580" y="160" text-anchor="middle" fill="#3b82f6" font-size="9">1.0 (Simple Efecto)</text>
+        <!-- Conexiones -->
+        <text x="415" y="120" fill="#94a3b8" font-size="7">1(P)</text>
+        <text x="505" y="105" fill="#94a3b8" font-size="7">2(A)</text>
+        <text x="450" y="152" fill="#94a3b8" font-size="7">3(R)</text>
+      </svg>
+      <div class="info-box" style="margin-top:0.8rem;">
+        <strong>⚡ Funcionamiento:</strong> S1 presionado → Y1 energizada → válvula conmuta (P→A) → vástago AVANZA. S1 suelto → Y1 desenergizada → resorte retorna válvula (A→R) → vástago RETROCEDE.
+      </div>
+    </div>
+
+    <!-- Circuito 2: Cilindro Doble Efecto -->
+    <div class="card">
+      <h3 style="margin-top:0;">2. Mando Directo — Cilindro Doble Efecto (5/2 Monoestable)</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">Control de un cilindro de <strong>doble efecto</strong> mediante electroválvula <strong>5/2 monoestable</strong>. Dos pulsadores independientes: <strong>S1 para avance</strong>, <strong>S2 para retroceso</strong> (o un solo pulsador con válvula monoestable que retorna por resorte).</p>
+      <svg viewBox="0 0 750 280" width="750" height="280" class="diagram">
+        <rect x="10" y="10" width="350" height="260" rx="8" fill="#111827" stroke="#f59e0b33"/>
+        <text x="185" y="35" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="600">CIRCUITO ELÉCTRICO</text>
+        <line x1="30" y1="50" x2="30" y2="250" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="330" y1="50" x2="330" y2="250" stroke="#f59e0b" stroke-width="1.5"/>
+        <!-- S1 Avance -->
+        <line x1="30" y1="75" x2="100" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="100" y1="75" x2="130" y2="55" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="130" y1="55" x2="160" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="160" y1="75" x2="330" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <text x="145" y="48" text-anchor="middle" fill="#f59e0b" font-size="8">S1 ↵</text>
+        <text x="250" y="70" text-anchor="middle" fill="#94a3b8" font-size="8">Pulsador AVANCE</text>
+        <!-- Y1 -->
+        <rect x="200" y="105" width="80" height="45" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="30" y1="127" x2="200" y2="127" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="280" y1="127" x2="330" y2="127" stroke="#f59e0b" stroke-width="1"/>
+        <text x="240" y="133" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="600">Y1</text>
+        <text x="240" y="162" text-anchor="middle" fill="#94a3b8" font-size="7">Bobina EV 5/2</text>
+        <!-- S2 Retroceso -->
+        <line x1="30" y1="195" x2="100" y2="195" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="100" y1="195" x2="130" y2="175" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="130" y1="175" x2="160" y2="195" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="160" y1="195" x2="330" y2="195" stroke="#f59e0b" stroke-width="1"/>
+        <text x="145" y="168" text-anchor="middle" fill="#f59e0b" font-size="8">S2 ⏚</text>
+        <text x="250" y="190" text-anchor="middle" fill="#94a3b8" font-size="8">Pulsador NC (Retroceso)</text>
+        <text x="145" y="240" text-anchor="middle" fill="#64748b" font-size="8">Nota: con 5/2 monoestable, al soltar S1</text>
+        <text x="145" y="252" text-anchor="middle" fill="#64748b" font-size="8">el resorte de la válvula retorna el cilindro</text>
+
+        <rect x="375" y="10" width="365" height="260" rx="8" fill="#111827" stroke="#3b82f633"/>
+        <text x="557" y="35" text-anchor="middle" fill="#3b82f6" font-size="11" font-weight="600">CIRCUITO NEUMÁTICO</text>
+        <line x1="420" y1="60" x2="420" y2="80" stroke="#3b82f6" stroke-width="1.5"/>
+        <polygon points="420,60 435,50 405,50" fill="#3b82f6"/>
+        <!-- Válvula 5/2 -->
+        <rect x="450" y="80" width="60" height="70" rx="6" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="480" y="100" text-anchor="middle" fill="#3b82f6" font-size="8">5/2</text>
+        <line x1="420" y1="80" x2="450" y2="100" stroke="#3b82f6" stroke-width="1"/>
+        <line x1="510" y1="105" x2="540" y2="105" stroke="#3b82f6" stroke-width="1"/>
+        <line x1="510" y1="125" x2="540" y2="125" stroke="#3b82f6" stroke-width="1"/>
+        <!-- Silenciadores -->
+        <polygon points="450,150 470,150 460,163" fill="none" stroke="#3b82f6" stroke-width="1"/>
+        <polygon points="505,150 525,150 515,163" fill="none" stroke="#3b82f6" stroke-width="1"/>
+        <!-- Cilindro DE -->
+        <rect x="540" y="85" width="100" height="50" rx="6" fill="none" stroke="#3b82f6" stroke-width="2"/>
+        <rect x="615" y="88" width="15" height="12" rx="3" fill="#3b82f690" stroke="#3b82f6" stroke-width="1"/>
+        <rect x="615" y="116" width="15" height="12" rx="3" fill="#3b82f690" stroke="#3b82f6" stroke-width="1"/>
+        <text x="590" y="155" text-anchor="middle" fill="#3b82f6" font-size="9">1.0 (Doble Efecto)</text>
+        <text x="415" y="135" fill="#94a3b8" font-size="7">1(P)</text>
+        <text x="535" y="100" fill="#94a3b8" font-size="7">4(A)</text>
+        <text x="535" y="122" fill="#94a3b8" font-size="7">2(B)</text>
+        <text x="440" y="165" fill="#94a3b8" font-size="7">5,3(R)</text>
+      </svg>
+      <div class="info-box" style="margin-top:0.8rem;">
+        <strong>⚡ Funcionamiento:</strong> S1 presionado → Y1 energizada → válvula conmuta (P→4, 2→3) → vástago AVANZA. Al soltar S1 → resorte retorna la válvula (P→2, 4→5) → vástago RETROCEDE automáticamente.
+      </div>
+    </div>
+
+    <!-- Circuito 3: Autoretención -->
+    <div class="card">
+      <h3 style="margin-top:0;">3. Mando con Autoretención (Memoria)</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">El circuito con <strong>autoretención</strong> mantiene la bobina energizada aunque se suelte el pulsador de marcha. Se usa un <strong>contacto auxiliar NA de K1</strong> en paralelo con S1. Para detener, un pulsador <strong>NC (S2)</strong> corta la alimentación.</p>
+      <svg viewBox="0 0 750 260" width="750" height="260" class="diagram">
+        <rect x="10" y="10" width="730" height="240" rx="8" fill="#111827" stroke="#f59e0b33"/>
+        <text x="375" y="35" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">CIRCUITO ELÉCTRICO DE AUTORETENCIÓN (K1)</text>
+        <line x1="30" y1="50" x2="30" y2="235" stroke="#f59e0b" stroke-width="1.5"/>
+        <line x1="710" y1="50" x2="710" y2="235" stroke="#f59e0b" stroke-width="1.5"/>
+        <!-- S2 STOP NC -->
+        <line x1="30" y1="75" x2="100" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="100" y1="65" x2="130" y2="85" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="130" y1="75" x2="160" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="160" y1="75" x2="710" y2="75" stroke="#f59e0b" stroke-width="1"/>
+        <text x="130" y="58" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="600">S2 STOP</text>
+        <text x="300" y="70" text-anchor="middle" fill="#94a3b8" font-size="8">Pulsador NC (Paro) — Rojo</text>
+        <!-- S1 START NA -->
+        <line x1="160" y1="105" x2="190" y2="105" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="190" y1="105" x2="220" y2="85" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="220" y1="85" x2="250" y2="105" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="250" y1="105" x2="350" y2="105" stroke="#f59e0b" stroke-width="1"/>
+        <text x="220" y="78" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">S1 START</text>
+        <!-- Contacto K1 en paralelo con S1 (autoretención) -->
+        <line x1="160" y1="130" x2="190" y2="130" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="190" y1="120" x2="230" y2="140" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="230" y1="130" x2="260" y2="130" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="260" y1="130" x2="350" y2="130" stroke="#f59e0b" stroke-width="1"/>
+        <text x="215" y="150" text-anchor="middle" fill="#f59e0b" font-size="8">K1 (NA) — Autoretención</text>
+        <line x1="250" y1="105" x2="250" y2="130" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="350" y1="105" x2="350" y2="130" stroke="#f59e0b" stroke-width="1"/>
+        <!-- Bobina K1 -->
+        <rect x="300" y="160" width="100" height="50" rx="8" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <line x1="250" y1="185" x2="300" y2="185" stroke="#f59e0b" stroke-width="1"/>
+        <line x1="400" y1="185" x2="710" y2="185" stroke="#f59e0b" stroke-width="1"/>
+        <text x="350" y="191" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">K1</text>
+        <text x="350" y="222" text-anchor="middle" fill="#94a3b8" font-size="8">Bobina Relé / Contactor</text>
+        <!-- Descripción del ciclo -->
+        <text x="550" y="100" fill="#10b981" font-size="9" font-weight="600">① Presionar S1 → K1 se energiza</text>
+        <text x="550" y="118" fill="#f59e0b" font-size="9">② Contacto K1 cierra (paralelo a S1)</text>
+        <text x="550" y="136" fill="#f59e0b" font-size="9">③ K1 queda autoalimentado aunque suelte S1</text>
+        <text x="550" y="160" fill="#ef4444" font-size="9" font-weight="600">④ Presionar S2 → circuito abierto → K1 cae</text>
+        <text x="550" y="185" fill="#94a3b8" font-size="9">⑤ Contacto K1 abre → sin alimentación</text>
+      </svg>
+      <div class="info-box" style="margin-top:0.8rem;">
+        <strong>💡 Aplicación:</strong> Este es el circuito base para arranque/paro de motores y sistemas que deben permanecer activos sin mantener presionado un botón. Es la base del <strong>diagrama ladder</strong> en PLC: <code>XIC(start) OR XIC(K1) AND XIO(stop) → OTE(K1)</code>.
+      </div>
+    </div>
+
+    <!-- Circuito 4: Secuencia A+B+A-B- -->
+    <div class="card">
+      <h3 style="margin-top:0;">4. Secuencia Neumática A+ B+ A− B− (Cascada)</h3>
+      <p style="color:var(--muted);font-size:0.9rem;">Secuencia clásica de dos cilindros: <strong>A avanza → B avanza → A retrocede → B retrocede</strong>. Se implementa con detectores magnéticos (a0, a1, b0, b1) y lógica de relés o PLC.</p>
+      <svg viewBox="0 0 750 200" width="750" height="200" class="diagram">
+        <rect x="10" y="10" width="730" height="180" rx="8" fill="#111827" stroke="#3b82f633"/>
+        <text x="375" y="35" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="600">DIAGRAMA DESPLAZAMIENTO-FASE — Secuencia A+ B+ A− B−</text>
+        <!-- Diagrama de fases -->
+        <!-- Cilindro A -->
+        <text x="60" y="80" fill="#f59e0b" font-size="10" font-weight="600">CILINDRO A</text>
+        <line x1="130" y1="75" x2="680" y2="75" stroke="#334155" stroke-width="1"/>
+        <text x="700" y="78" fill="#94a3b8" font-size="8">t</text>
+        <!-- A+ -->
+        <rect x="130" y="55" width="140" height="20" rx="3" fill="#f59e0b55"/>
+        <text x="200" y="69" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">A+ (Avanza)</text>
+        <!-- A espera -->
+        <line x1="270" y1="65" x2="410" y2="65" stroke="#f59e0b66" stroke-width="2" stroke-dasharray="4,3"/>
+        <!-- A- -->
+        <rect x="410" y="55" width="140" height="20" rx="3" fill="#1e293b"/>
+        <text x="480" y="69" text-anchor="middle" fill="#64748b" font-size="9" font-weight="600">A− (Retrocede)</text>
+        <line x1="550" y1="65" x2="680" y2="65" stroke="#1e293b" stroke-width="2"/>
+        <!-- Cilindro B -->
+        <text x="60" y="125" fill="#3b82f6" font-size="10" font-weight="600">CILINDRO B</text>
+        <line x1="130" y1="120" x2="680" y2="120" stroke="#334155" stroke-width="1"/>
+        <!-- B espera -->
+        <line x1="130" y1="110" x2="270" y2="110" stroke="#1e293b" stroke-width="2"/>
+        <!-- B+ -->
+        <rect x="270" y="100" width="140" height="20" rx="3" fill="#3b82f655"/>
+        <text x="340" y="114" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">B+ (Avanza)</text>
+        <!-- B espera -->
+        <line x1="410" y1="110" x2="550" y2="110" stroke="#3b82f666" stroke-width="2" stroke-dasharray="4,3"/>
+        <!-- B- -->
+        <rect x="550" y="100" width="130" height="20" rx="3" fill="#1e293b"/>
+        <text x="615" y="114" text-anchor="middle" fill="#64748b" font-size="9" font-weight="600">B− (Retrocede)</text>
+        <!-- Flechas de condición -->
+        <text x="285" y="95" text-anchor="middle" fill="#06b6d4" font-size="7">→ Inicia B+</text>
+        <text x="425" y="95" text-anchor="middle" fill="#06b6d4" font-size="7">→ Inicia A−</text>
+        <text x="565" y="95" text-anchor="middle" fill="#06b6d4" font-size="7">→ Inicia B−</text>
+        <!-- Condiciones -->
+        <text x="200" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">Cond: a1 (A extendido)</text>
+        <text x="340" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">Cond: b1 (B extendido)</text>
+        <text x="480" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">Cond: a0 (A retraído)</text>
+        <text x="615" y="155" text-anchor="middle" fill="#94a3b8" font-size="8">Cond: b0 (B retraído)</text>
+        <text x="375" y="178" text-anchor="middle" fill="#64748b" font-size="8">Implementación: detectores magnéticos a0/a1/b0/b1 → entradas PLC → lógica ladder → salidas Y1/Y2 (electroválvulas 5/2)</text>
+      </svg>
+    </div>
+
+    <div class="info-box">
+      <strong>🔐 Nota de seguridad:</strong> Todo circuito electroneumático industrial debe incluir <strong>paro de emergencia</strong> (seta roja NC con enclavamiento) que corte la alimentación de todas las electroválvulas, y <strong>válvula de seguridad 3/2 NC</strong> en la línea de alimentación de aire (controlada por relé de seguridad).
+    </div>
+  </section>
+
+  <!-- ═══════════ 4. APLICACIONES ═══════════ -->
+  <section class="section" id="aplicaciones">
+    <h2>🏭 Aplicaciones Industriales</h2>
+    <p style="color:var(--muted);margin-bottom:1rem;">La electroneumática está presente en prácticamente todos los sectores industriales. Estas son sus aplicaciones más representativas.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3 style="margin-top:0;">🤖 Pick & Place</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Sistemas de manipulación que toman piezas de una posición y las colocan en otra. Combinan cilindros sin vástago para desplazamiento horizontal, cilindros compactos para elevación, y ventosas o pinzas neumáticas para sujeción.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Control típico: PLC con detectores magnéticos en cada cilindro para confirmar posiciones. Secuencias de alta velocidad (&gt;60 ciclos/min).</p>
+        <span class="tag tag-electric">Automotriz</span><span class="tag tag-pneumatic">Electrónica</span>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">🚪 Puertas Automáticas</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Accionamiento de puertas en buses, trenes y edificios. Cilindros doble efecto controlados por electroválvulas 5/2 biestables para mantener posición sin consumo eléctrico continuo.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Incluyen sensores de seguridad (barreras fotoeléctricas) para detección de obstáculos y sistema anti-aplastamiento.</p>
+        <span class="tag tag-control">Transporte</span>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">📦 Clasificación y Embalaje</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Líneas de clasificación por peso, tamaño o código de barras. Cilindros expulsores neumáticos desvían productos a diferentes rampas. Sensores fotoeléctricos o de visión artificial identifican cada producto.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Coordinación con bandas transportadoras y sistemas de etiquetado.</p>
+        <span class="tag tag-pneumatic">Logística</span><span class="tag tag-electric">Alimentos</span>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">🔧 Prensas y Sujeción</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Prensas neumáticas para ensamblaje, remachado, estampado ligero. Cilindros de gran diámetro (Ø100-320mm) generan fuerzas de 4-50 kN a 6 bar.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Control por doble pulsador (anti-atrapamiento) + válvula de seguridad. Temporizador para control de tiempo de prensado.</p>
+        <span class="tag tag-electric">Manufactura</span>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">💧 Control de Válvulas</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Accionamiento de válvulas de proceso (mariposa, bola, compuerta) mediante actuadores neumáticos rotativos (rack & pinion) o lineales. Electroválvulas pilotan el actuador.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Común en plantas químicas, petroquímicas, tratamiento de agua. Señales 4-20mA para posicionadores proporcionales.</p>
+        <span class="tag tag-control">Procesos</span><span class="tag tag-pneumatic">Petroquímica</span>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;">🏗️ Dosificación y Llenado</h3>
+        <p style="color:var(--muted);font-size:0.9rem;">Máquinas llenadoras de líquidos, polvos o granulados. Cilindros controlan compuertas de dosificación. Válvulas de aguja neumáticas para control preciso de flujo.</p>
+        <p style="color:var(--muted);font-size:0.9rem;">Coordinación con sensores de nivel, caudalímetros y balanzas. Entornos ATEX frecuentes → electroneumática ideal.</p>
+        <span class="tag tag-pneumatic">Farmacéutica</span><span class="tag tag-electric">Alimentaria</span>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>📊 Dato industrial:</strong> Más del <strong>90% de las plantas de manufactura</strong> utilizan sistemas neumáticos o electroneumáticos. La tendencia actual es hacia <strong>IO-Link</strong> y <strong>válvulas con electrónica integrada</strong> que permiten diagnóstico remoto, mantenimiento predictivo y ajuste de parámetros por software.
+    </div>
+  </section>
+
+  <!-- ═══════════ 5. QUIZ ═══════════ -->
+  <section class="section" id="quiz">
+    <h2>🧠 Quiz de Electroneumática</h2>
+    <p style="color:var(--muted);margin-bottom:1rem;">Pon a prueba tus conocimientos. Selecciona la respuesta correcta en cada pregunta.</p>
+    <div class="quiz-score" id="quiz-score" style="display:none;">Puntuación: <span id="score-val">0</span> / <span id="score-total">8</span></div>
+    <div id="quiz-container"></div>
+    <div style="text-align:center;margin-top:1.5rem;">
+      <button class="btn" id="quiz-reset" style="display:none;">🔄 Reiniciar Quiz</button>
+    </div>
+  </section>
 </main>
 
 <script>
@@ -328,6 +604,124 @@ document.querySelectorAll('nav button').forEach(btn => {
     document.getElementById(btn.dataset.section).classList.add('active');
   });
 });
+
+// ── QUIZ ──
+const quizData = [
+  {
+    q: '¿Cuál es el elemento que convierte una señal eléctrica en conmutación neumática?',
+    opts: ['El compresor', 'La electroválvula', 'El cilindro', 'El presostato'],
+    ans: 1,
+    expl: 'La electroválvula es el puente entre el control eléctrico y la potencia neumática. Recibe 24V DC y conmuta el paso de aire comprimido.'
+  },
+  {
+    q: '¿Qué tipo de electroválvula se necesita para controlar un cilindro de simple efecto?',
+    opts: ['5/2 biestable', '3/2 monoestable NC', '5/3 centro cerrado', '2/2 monoestable'],
+    ans: 1,
+    expl: 'La válvula 3/2 tiene 3 vías y 2 posiciones. Alimenta una cámara (P→A) y en reposo conecta A→R para que el resorte del cilindro retorne el vástago.'
+  },
+  {
+    q: 'En un circuito con autoretención (K1), ¿qué función tiene el contacto auxiliar NA de K1?',
+    opts: ['Proteger contra cortocircuitos', 'Mantener K1 energizado tras soltar el pulsador de marcha', 'Invertir el sentido del cilindro', 'Activar una alarma'],
+    ans: 1,
+    expl: 'El contacto NA de K1 se coloca en paralelo con el pulsador S1 (START). Al energizarse K1, su contacto cierra y mantiene la alimentación aunque se suelte S1.'
+  },
+  {
+    q: '¿Qué sensor se monta externamente sobre la camisa del cilindro para detectar la posición del émbolo?',
+    opts: ['Final de carrera mecánico', 'Sensor inductivo', 'Sensor magnético (Reed)', 'Sensor capacitivo'],
+    ans: 2,
+    expl: 'El sensor Reed detecta el campo magnético del imán incorporado en el émbolo del cilindro. Se monta sobre la camisa sin contacto mecánico con partes móviles.'
+  },
+  {
+    q: '¿Cuál es la principal ventaja de la señal eléctrica frente a la neumática en sistemas de control?',
+    opts: ['Mayor fuerza de accionamiento', 'Velocidad de transmisión (~300,000 km/s vs ~340 m/s)', 'No requiere fuente de alimentación', 'Es más económica'],
+    ans: 1,
+    expl: 'Las señales eléctricas viajan a la velocidad de la luz, mientras que las neumáticas están limitadas a la velocidad del sonido (~340 m/s). Esto permite control a largas distancias sin retardo.'
+  },
+  {
+    q: 'En la secuencia A+ B+ A− B−, ¿qué condición inicia el movimiento B+?',
+    opts: ['Que A esté retraído (a0)', 'Que transcurra un tiempo fijo', 'Que A esté extendido (a1)', 'Que B esté retraído (b0)'],
+    ans: 2,
+    expl: 'La secuencia es: A avanza → al detectar a1 (A extendido), B avanza. Luego al detectar b1 (B extendido), A retrocede. Finalmente al detectar a0, B retrocede.'
+  },
+  {
+    q: '¿Qué voltaje de control es el más común en electroneumática industrial?',
+    opts: ['12V DC', '24V DC', '110V AC', '220V AC'],
+    ans: 1,
+    expl: '24V DC es el estándar industrial para control electroneumático. Es seguro (baja tensión), compatible con PLC y sensores, y no requiere protecciones especiales contra contacto directo.'
+  },
+  {
+    q: '¿Qué componente es obligatorio en todo circuito electroneumático industrial según ISO 13850?',
+    opts: ['PLC', 'Seta de emergencia con enclavamiento', 'Presostato digital', 'Válvula reguladora de caudal'],
+    ans: 1,
+    expl: 'La seta de emergencia (roja, cabeza de hongo, enclavamiento mecánico) es obligatoria. Debe cortar la alimentación de todas las electroválvulas y requiere desenclavamiento manual para reiniciar.'
+  }
+];
+
+let score = 0, answered = 0;
+const container = document.getElementById('quiz-container');
+const scoreDiv = document.getElementById('quiz-score');
+const scoreVal = document.getElementById('score-val');
+const scoreTotal = document.getElementById('score-total');
+const resetBtn = document.getElementById('quiz-reset');
+
+scoreTotal.textContent = quizData.length;
+
+function buildQuiz() {
+  container.innerHTML = '';
+  score = 0; answered = 0;
+  scoreVal.textContent = '0';
+  scoreDiv.style.display = 'none';
+  resetBtn.style.display = 'none';
+
+  quizData.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-q';
+    div.innerHTML = `<p>${i+1}. ${item.q}</p><div class="quiz-options" id="opts-${i}"></div><div class="quiz-fb" id="fb-${i}"></div>`;
+    container.appendChild(div);
+
+    const optsDiv = document.getElementById(`opts-${i}`);
+    item.opts.forEach((opt, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => checkAnswer(i, j, btn));
+      optsDiv.appendChild(btn);
+    });
+  });
+}
+
+function checkAnswer(qIdx, chosen, btn) {
+  const item = quizData[qIdx];
+  const optsDiv = document.getElementById(`opts-${qIdx}`);
+  const fbDiv = document.getElementById(`fb-${qIdx}`);
+
+  // Evitar doble respuesta
+  if (optsDiv.querySelectorAll(':disabled').length > 0) return;
+
+  // Deshabilitar todas las opciones
+  optsDiv.querySelectorAll('button').forEach(b => b.disabled = true);
+
+  if (chosen === item.ans) {
+    btn.classList.add('correct');
+    fbDiv.innerHTML = '<span style="color:#10b981;">✅ ¡Correcto!</span> ' + item.expl;
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    optsDiv.querySelectorAll('button')[item.ans].classList.add('correct');
+    fbDiv.innerHTML = '<span style="color:#ef4444;">❌ Incorrecto.</span> ' + item.expl;
+  }
+
+  answered++;
+  scoreVal.textContent = score;
+  scoreDiv.style.display = 'block';
+
+  if (answered === quizData.length) {
+    resetBtn.style.display = 'inline-block';
+  }
+}
+
+resetBtn.addEventListener('click', buildQuiz);
+buildQuiz();
 </script>
 </body>
 </html>
