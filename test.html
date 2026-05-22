@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test · Electroneumática y Neumática · 20 puntos</title>
+<style>
+  :root {--bg:#0a1628;--card:#112240;--border:#1e3a5f;--text:#ccd6f6;--muted:#8892b0;--accent:#64ffda;--correct:#43d9ad;--wrong:#ff6b6b;--warn:#f0ad4e;--radius:12px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+  header{background:linear-gradient(135deg,#0a1628,#112240);border-bottom:1px solid var(--border);padding:2rem 1.5rem;text-align:center}
+  header h1{font-size:1.8rem;font-weight:800;color:var(--accent)}
+  header .sub{color:var(--muted);font-size:0.9rem;margin-top:0.3rem}
+  main{max-width:800px;margin:0 auto;padding:2rem 1.5rem 4rem}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1rem}
+  .q-title{font-weight:700;margin-bottom:0.8rem;font-size:1rem;color:var(--text)}
+  .q-num{color:var(--accent);font-weight:800;margin-right:0.3rem}
+  .opts{display:flex;flex-direction:column;gap:0.4rem}
+  .opt{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:0.6rem 1rem;border-radius:8px;cursor:pointer;text-align:left;font-size:0.9rem;transition:all 0.2s;display:block;width:100%}
+  .opt:hover:not(:disabled){border-color:var(--accent);background:rgba(100,255,218,0.06)}
+  .opt.selected{border-color:var(--accent);background:rgba(100,255,218,0.1)}
+  .opt.correct{border-color:var(--correct)!important;background:rgba(67,217,173,0.12)!important}
+  .opt.wrong{border-color:var(--wrong)!important;background:rgba(255,107,107,0.12)!important}
+  .opt:disabled{cursor:not-allowed}
+  .points{color:var(--accent);font-size:0.8rem;float:right}
+  .form-group{margin-bottom:1rem}
+  .form-group label{display:block;margin-bottom:0.3rem;color:var(--muted);font-size:0.85rem}
+  .form-group input{width:100%;padding:0.6rem 0.8rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:0.9rem}
+  .form-group input:focus{outline:none;border-color:var(--accent)}
+  .btn{background:var(--accent);color:#0a1628;border:none;padding:0.75rem 2rem;border-radius:999px;font-weight:700;cursor:pointer;font-size:0.95rem;transition:opacity 0.2s;display:inline-block}
+  .btn:hover{opacity:0.85}
+  .btn:disabled{opacity:0.4;cursor:not-allowed}
+  .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+  .score-box{text-align:center;padding:2rem;background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);margin:1.5rem 0}
+  .score-box .big{font-size:3rem;font-weight:800;color:var(--accent)}
+  .score-box .note{color:var(--muted);margin-top:0.5rem}
+  .result-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin:0.5rem 0}
+  .result-card .r-q{font-weight:600;font-size:0.9rem}
+  .result-card .r-a{color:var(--muted);font-size:0.85rem}
+  .result-card .r-status{font-size:0.8rem;font-weight:600}
+  .result-card .r-status.ok{color:var(--correct)}
+  .result-card .r-status.ko{color:var(--wrong)}
+  .hidden{display:none!important}
+  .alert{background:rgba(240,173,78,0.1);border:1px solid var(--warn);border-radius:var(--radius);padding:1rem;margin:1rem 0;font-size:0.9rem}
+  .alert strong{color:var(--warn)}
+  .spinner{display:inline-block;width:18px;height:18px;border:2px solid #0a1628;border-top:2px solid var(--accent);border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  footer{text-align:center;color:var(--muted);font-size:0.8rem;padding:2rem;border-top:1px solid var(--border)}
+  @media(max-width:600px){
+    header h1{font-size:1.4rem}
+    .score-box .big{font-size:2.2rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🧪 Test de Electroneumática y Neumática</h1>
+  <p class="sub">10 preguntas · 2 puntos cada una · Total: 20 puntos</p>
+</header>
+
+<main>
+
+<!-- FORMULARIO DE DATOS PERSONALES -->
+<div class="card" id="form-card">
+  <h2 style="font-size:1.2rem;margin:0 0 1rem;color:var(--accent)">📝 Datos del estudiante</h2>
+  <div class="form-group">
+    <label>Nombre completo *</label>
+    <input type="text" id="nombre" placeholder="Ej: Renato Chávez Cajahuanca" required>
+  </div>
+  <div class="form-group">
+    <label>Correo electrónico *</label>
+    <input type="email" id="email" placeholder="Ej: rchavezca@uni.edu.pe" required>
+  </div>
+  <div class="form-group">
+    <label>Código / DNI (opcional)</label>
+    <input type="text" id="codigo" placeholder="Ej: 20201001A o 12345678">
+  </div>
+</div>
+
+<!-- TEST -->
+<div id="test-container"></div>
+
+<!-- BOTONES -->
+<div style="text-align:center;margin:1.5rem 0">
+  <button class="btn" id="btn-submit" disabled>📤 Enviar respuestas</button>
+  <button class="btn btn-outline" id="btn-reset" style="margin-left:0.5rem">🔄 Reiniciar</button>
+</div>
+
+<!-- RESULTADOS -->
+<div id="results-container" class="hidden">
+  <div class="score-box" id="score-box"></div>
+  <div class="card">
+    <h3 style="margin:0 0 1rem;color:var(--accent)">📋 Detalle de respuestas</h3>
+    <div id="detalle"></div>
+  </div>
+  <div style="text-align:center;margin-top:1rem">
+    <button class="btn btn-outline" id="btn-retry">🔄 Intentar de nuevo</button>
+  </div>
+</div>
+
+<!-- INSTRUCCIONES CONFIGURACIÓN GOOGLE SHEETS -->
+<div class="alert" id="setup-alert" style="display:none">
+  <strong>⚠️ Configuración pendiente:</strong> Para recibir los resultados en Google Sheets, sigue las <a href="#setup" style="color:var(--accent)">instrucciones abajo</a>.
+</div>
+
+</main>
+
+<div class="card" style="max-width:800px;margin:0 auto 3rem;background:#0d1f35" id="setup">
+  <h2 style="color:var(--warn);margin-top:0">🔧 Cómo recibir resultados en Google Sheets</h2>
+  <div style="color:var(--muted);font-size:0.9rem;line-height:1.8">
+    <p><strong>Paso 1:</strong> Crea una Google Sheet nueva en <a href="https://sheets.new" style="color:var(--accent)">sheets.new</a></p>
+    <p><strong>Paso 2:</strong> Ve a <em>Extensiones → Apps Script</em></p>
+    <p><strong>Paso 3:</strong> Pega este código y guarda (<kbd style="background:var(--bg);padding:2px 6px;border-radius:4px;font-size:0.85rem">Ctrl+S</kbd>):</p>
+    <pre style="background:#0a1628;padding:1rem;border-radius:8px;overflow-x:auto;font-size:0.8rem;border:1px solid var(--border)"><code>function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  
+  // Encabezados (solo primera vez)
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['Fecha','Nombre','Correo','Código',
+      'P1','P2','P3','P4','P5','P6','P7','P8','P9','P10',
+      'Puntaje','Nota']);
+  }
+  
+  sheet.appendRow([
+    new Date(),
+    data.nombre,
+    data.email,
+    data.codigo,
+    data.r1, data.r2, data.r3, data.r4, data.r5,
+    data.r6, data.r7, data.r8, data.r9, data.r10,
+    data.puntaje,
+    data.puntaje
+  ]);
+  
+  return ContentService.createTextOutput(JSON.stringify({ok:true}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</code></pre>
+    <p><strong>Paso 4:</strong> Haz clic en <em>Implementar → Nueva implementación</em></p>
+    <p><strong>Paso 5:</strong> Tipo: <strong>Aplicación web</strong>. Ejecutar como: <strong>Yo</strong>. Acceso: <strong>Cualquiera</strong></p>
+    <p><strong>Paso 6:</strong> Copia la URL de implementación y pégala aquí 👇</p>
+    <div class="form-group" style="margin-top:0.8rem">
+      <label>URL de Google Apps Script:</label>
+      <input type="text" id="gs-url" placeholder="https://script.google.com/macros/s/.../exec" style="font-size:0.8rem">
+    </div>
+    <button class="btn" id="btn-save-url" style="margin-top:0.5rem;font-size:0.85rem">💾 Guardar URL</button>
+    <span id="url-status" style="margin-left:0.8rem;color:var(--correct);font-size:0.85rem"></span>
+  </div>
+</div>
+
+<footer>Test · Electroneumática y Neumática · Clara ✨</footer>
+
+<script>
+// ── PREGUNTAS ──
+const questions = [
+  {q:'¿Cuál es el elemento que convierte una señal eléctrica en conmutación neumática?',o:['El compresor','La electroválvula','El cilindro','El presostato'],a:1},
+  {q:'¿Qué tipo de válvula se necesita para un cilindro de doble efecto en un circuito semiautomático con memoria?',o:['3/2 monoestable NC','5/2 monoestable','5/2 biestable','5/3 centro cerrado'],a:2},
+  {q:'En un circuito neumático semiautomático, ¿qué función cumple una válvula selectora OR?',o:['Regular la presión','Combinar dos señales sin interferencia','Dividir el caudal','Actuar como escape rápido'],a:1},
+  {q:'¿Qué componente detecta que el vástago del cilindro ha llegado al final de su carrera en un sistema neumático puro?',o:['Sensor inductivo','Final de carrera neumático (3/2 con rodillo)','Presostato','Caudalímetro'],a:1},
+  {q:'¿Cuál es la presión de trabajo típica en sistemas neumáticos industriales?',o:['1-2 bar','6-10 bar','20-30 bar','50-60 bar'],a:1},
+  {q:'¿Qué significan las siglas FRL en una unidad de mantenimiento neumático?',o:['Fuerza, Resistencia, Longitud','Filtro, Regulador, Lubricador','Flujo, Retorno, Línea','Frecuencia, Relé, Lógica'],a:1},
+  {q:'En una electroválvula 5/2 biestable, ¿qué sucede si se pierde la señal eléctrica en ambos solenoides?',o:['El cilindro retrocede por resorte','La válvula mantiene su última posición','El sistema se despresuriza','Se activa una alarma'],a:1},
+  {q:'¿Qué norma internacional define la simbología de componentes neumáticos?',o:['ISO 9001','ISO 1219-1','ISO 14001','IEC 61131'],a:1},
+  {q:'¿Cuál es la principal ventaja de la señal eléctrica sobre la neumática en control?',o:['Mayor fuerza','Velocidad (~300,000 km/s vs ~340 m/s)','No necesita cables','Es más barata'],a:1},
+  {q:'En un circuito con autoretención (K1), ¿qué elemento permite que el sistema siga activo al soltar el pulsador START?',o:['Un temporizador','Un contacto NA de K1 en paralelo con START','Un diodo','Un capacitor'],a:1}
+];
+
+let selected = new Array(10).fill(-1);
+let submitted = false;
+
+// ── RENDER TEST ──
+const container = document.getElementById('test-container');
+
+function renderTest() {
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.id = 'q-card-' + i;
+    card.innerHTML = `
+      <div class="q-title"><span class="q-num">${i+1}.</span> ${q.q} <span class="points">2 pts</span></div>
+      <div class="opts" id="opts-${i}"></div>
+    `;
+    container.appendChild(card);
+
+    const optsDiv = document.getElementById('opts-' + i);
+    q.o.forEach((opt, j) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.textContent = opt;
+      btn.addEventListener('click', () => selectAnswer(i, j, btn));
+      optsDiv.appendChild(btn);
+    });
+  });
+  updateSubmitBtn();
+}
+
+function selectAnswer(qIdx, optIdx, btn) {
+  if (submitted) return;
+  selected[qIdx] = optIdx;
+  // Marcar selección visual
+  document.querySelectorAll(`#opts-${qIdx} .opt`).forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateSubmitBtn();
+}
+
+function updateSubmitBtn() {
+  const allAnswered = selected.every(s => s !== -1);
+  const nombreOk = document.getElementById('nombre').value.trim().length > 0;
+  const emailOk = document.getElementById('email').value.trim().length > 0;
+  document.getElementById('btn-submit').disabled = !(allAnswered && nombreOk && emailOk);
+}
+
+// Habilitar botón al llenar datos
+['nombre','email','codigo'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateSubmitBtn);
+});
+
+// ── ENVIAR ──
+document.getElementById('btn-submit').addEventListener('click', async () => {
+  if (submitted) return;
+  submitted = true;
+
+  // Calcular puntaje
+  let score = 0;
+  const detalle = [];
+  questions.forEach((q, i) => {
+    const ok = selected[i] === q.a;
+    if (ok) score += 2;
+    detalle.push({
+      num: i+1,
+      pregunta: q.q,
+      respuesta: q.o[selected[i]],
+      correcta: q.o[q.a],
+      ok
+    });
+  });
+
+  // Marcar visualmente
+  questions.forEach((q, i) => {
+    const opts = document.querySelectorAll(`#opts-${i} .opt`);
+    opts.forEach((btn, j) => {
+      btn.disabled = true;
+      if (j === q.a) btn.classList.add('correct');
+      if (j === selected[i] && j !== q.a) btn.classList.add('wrong');
+    });
+  });
+  document.getElementById('btn-submit').disabled = true;
+
+  // Mostrar resultados
+  showResults(score, detalle);
+
+  // Enviar a Google Sheets
+  const gsUrl = localStorage.getItem('gs_script_url');
+  if (gsUrl) {
+    document.getElementById('btn-submit').innerHTML = '<span class="spinner"></span> Enviando...';
+    try {
+      const payload = {
+        nombre: document.getElementById('nombre').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        codigo: document.getElementById('codigo').value.trim() || '-',
+        r1: selected[0], r2: selected[1], r3: selected[2], r4: selected[3], r5: selected[4],
+        r6: selected[5], r7: selected[6], r8: selected[7], r9: selected[8], r10: selected[9],
+        puntaje: score
+      };
+      await fetch(gsUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      document.getElementById('btn-submit').textContent = '✅ Enviado a Google Sheets';
+    } catch(e) {
+      document.getElementById('btn-submit').textContent = '⚠️ Error al enviar (revisa URL)';
+    }
+  } else {
+    document.getElementById('btn-submit').textContent = '📤 Resultado listo (configura Google Sheets para guardar)';
+  }
+});
+
+function showResults(score, detalle) {
+  document.getElementById('results-container').classList.remove('hidden');
+  document.getElementById('score-box').innerHTML = `
+    <div class="big">${score} / 20</div>
+    <div class="note">${score >= 16 ? '🏆 ¡Excelente!' : score >= 12 ? '👍 Buen trabajo' : score >= 8 ? '📚 Sigue estudiando' : '🔁 Necesitas repasar'}</div>
+    <div style="font-size:0.8rem;color:var(--muted);margin-top:0.3rem">${document.getElementById('nombre').value.trim()}</div>
+  `;
+
+  const detDiv = document.getElementById('detalle');
+  detDiv.innerHTML = detalle.map(d => `
+    <div class="result-card">
+      <div class="r-q">${d.num}. ${d.pregunta}</div>
+      <div class="r-a">Tu respuesta: <strong style="color:${d.ok?'var(--correct)':'var(--wrong)'}">${d.respuesta}</strong>${!d.ok ? ` — Correcta: <strong style="color:var(--correct)">${d.correcta}</strong>` : ''}</div>
+      <div class="r-status ${d.ok?'ok':'ko'}">${d.ok ? '✅ +2 pts' : '❌ 0 pts'}</div>
+    </div>
+  `).join('');
+}
+
+// ── REINICIAR ──
+function resetAll() {
+  submitted = false;
+  selected = new Array(10).fill(-1);
+  document.getElementById('results-container').classList.add('hidden');
+  document.getElementById('btn-submit').textContent = '📤 Enviar respuestas';
+  document.getElementById('btn-submit').disabled = true;
+  renderTest();
+}
+
+document.getElementById('btn-reset').addEventListener('click', resetAll);
+document.getElementById('btn-retry').addEventListener('click', resetAll);
+
+// ── GUARDAR URL GOOGLE SHEETS ──
+const savedUrl = localStorage.getItem('gs_script_url');
+if (savedUrl) {
+  document.getElementById('gs-url').value = savedUrl;
+  document.getElementById('url-status').textContent = '✅ Configurado';
+}
+document.getElementById('btn-save-url').addEventListener('click', () => {
+  const url = document.getElementById('gs-url').value.trim();
+  if (url.startsWith('https://script.google.com/')) {
+    localStorage.setItem('gs_script_url', url);
+    document.getElementById('url-status').textContent = '✅ Guardado';
+  } else {
+    document.getElementById('url-status').textContent = '❌ URL inválida';
+  }
+});
+
+renderTest();
+</script>
+
+</body>
+</html>
