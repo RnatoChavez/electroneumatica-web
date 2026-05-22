@@ -30,6 +30,10 @@
   .tag-cyl{background:rgba(187,154,247,0.15);color:var(--cyl)}
   .highlight{background:rgba(100,255,218,0.06);border-left:3px solid var(--accent);padding:1rem 1.2rem;border-radius:0 10px 10px 0;margin:1rem 0}
   .highlight strong{color:var(--accent)}
+  .pdf-container{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:0;margin-bottom:1.2rem;overflow:hidden}
+  .pdf-container iframe{width:100%;height:75vh;border:none;display:block}
+  .divider{text-align:center;padding:1.5rem 0 0.5rem;color:var(--accent);font-size:1.2rem;font-weight:700}
+  .divider::before,.divider::after{content:' ═══ ';color:var(--border)}
   svg{max-width:100%;height:auto;display:block;margin:1rem auto}
   .footer{text-align:center;color:var(--muted);font-size:0.8rem;padding:2rem 0 1rem;border-top:1px solid var(--border);margin-top:2rem}
   @media(max-width:600px){.card-grid{grid-template-columns:1fr}}
@@ -43,6 +47,18 @@
 </header>
 
 <main>
+
+<!-- ════════ ENUNCIADO ORIGINAL ════════ -->
+<div class="card" style="padding:0.5rem;text-align:center">
+  <h2 style="margin:0.8rem 0 0.5rem">📄 Enunciado Original del Examen</h2>
+  <p style="color:var(--muted);font-size:0.85rem;margin-bottom:0.5rem;">PROBLEMA 3 — (6 puntos)</p>
+</div>
+<div class="pdf-container">
+  <iframe src="problema3-enunciado.pdf#toolbar=0&navpanes=0" title="Enunciado Problema 3"></iframe>
+</div>
+
+<!-- Separador -->
+<div class="divider">🔽 DESARROLLO Y SOLUCIÓN 🔽</div>
 
 <!-- ESQUEMA PRINCIPAL SVG -->
 <div class="card" style="text-align:center">
